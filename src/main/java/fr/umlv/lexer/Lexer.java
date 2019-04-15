@@ -1,19 +1,22 @@
 package fr.umlv.lexer;
 
-import java.util.Objects;
 import java.util.Optional;
+import java.util.regex.Pattern;
 
-class Lexer<T> {
-
-    private static final Lexer LEXER = new Lexer();
+interface Lexer<T> {
 
     static Lexer create() {
-        return LEXER;
+        return EmptyLexer.instance();
     }
 
-    Optional<T> tryParse(String value) {
-        Objects.requireNonNull(value);
-        return Optional.empty();
+    static Lexer from(String pattern) {
+        return new GroupPatternLexer(pattern);
     }
+
+    static Lexer from(Pattern pattern) {
+        return new GroupPatternLexer(pattern);
+    }
+
+    Optional<T> tryParse(String value);
 
 }

@@ -46,7 +46,6 @@ public class LexerTest {
     assertThrows(NullPointerException.class, () -> Lexer.create().tryParse(null));
   }
   
-  /*
   interface LexerFactory {
     Lexer<String> create(String regex);
   }
@@ -109,7 +108,8 @@ public class LexerTest {
         );
   }
 
-  
+    /*
+
   @Tag("Q3") @Test
   public void testMapRecognized() {
     assertAll(
